@@ -30,6 +30,7 @@ mark_as_advanced(AC_LOCAL_SWIFT_BUILD_TESTS AC_LOCAL_SWIFT_BUILD_EXAMPLES)
 
 include(ac_build_prj_util)
 add_ac_local(0.1.1)
+CPMAddPackage(gh:iboB/itlib@1.11.4)
 
 #######################################
 # cfg
@@ -49,9 +50,9 @@ add_subdirectory(code)
 
 if(AC_LOCAL_SWIFT_BUILD_TESTS)
     enable_testing()
-    # add_subdirectory(test)
+    add_subdirectory(test)
 endif()
 
 if(AC_LOCAL_SWIFT_BUILD_TESTS)
-    # add_subdirectory(example)
+    add_subdirectory(example)
 endif()

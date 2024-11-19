@@ -22,4 +22,9 @@ class Model;
 class DictRef;
 Expected<Model, std::string> createModel(AlpacaCoreSwift::ModelDesc& desc, DictRef params, ProgressCallbackData progressCbData);
 
+void loadPlugin(const std::string& path);
+void addPluginDir(const std::string& path);
+void addPluginDirsFromEnv(const std::string& envVar);
+void loadAllPlugins();
+
 }

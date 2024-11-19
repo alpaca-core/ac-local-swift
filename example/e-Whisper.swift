@@ -3,8 +3,7 @@
 //
 import Foundation
 import AlpacaCoreSwift
-import ACTestData
-import ACAudio
+import ACExampleData
 
 func progress(_ tag: String, _ progress: Float) {
     print("[\(tag)]Progress: \(progress)")
@@ -16,9 +15,13 @@ struct WhisperExample {
         print("Hello from e-Whisper.swift")
 
         initSDK();
+
+        addPluginDir(path: String(cString: ACExampleData.AC.getPluginsDir()))
+        loadAllPlugins()
+
         let model: Model
         let instance: Instance
-        let whisperDir = String(cString: ACTestData.AC.getWhisperDir())
+        let whisperDir = String(cString: ACExampleData.AC.getWhisperDir())
         do {
             var desc = ModelDesc()
             desc.inferenceType = "whisper.cpp"
@@ -42,7 +45,7 @@ struct WhisperExample {
         let audioFile = "/as-she-sat.wav"
 
         let filePath = whisperDir + audioFile
-        let wavAudio = Array<Float>(ACAudio.AC.loadWavF32Mono(std.string(filePath)))
+        let wavAudio = Array<Float>(ACExampleData.AC.loadWavF32Mono(std.string(filePath)))
         let audioData = wavAudio.withUnsafeBufferPointer { bufferPointer in
             Data(buffer: bufferPointer)
         }

@@ -14,6 +14,22 @@ public func initSDK() {
     AC.initSDK()
 }
 
+public func loadPlugin(path: String) {
+    AC.loadPlugin(std.string(path))
+}
+
+public func addPluginDir(path: String) {
+    AC.addPluginDir(std.string(path))
+}
+
+public func addPluginDirsFromEnv(envVar: String) {
+    AC.addPluginDirsFromEnv(std.string(envVar))
+}
+
+public func loadAllPlugins() {
+    AC.loadAllPlugins()
+}
+
 class ProgressCallbackWrapper {
     let cb: Optional<(String, Float) -> Void>
     init(_ cb: Optional<(String, Float) -> Void>) {

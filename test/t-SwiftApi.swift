@@ -43,7 +43,7 @@ final class SwiftApiTests: XCTestCase {
         let dict = Dictionary<String, Any>()
 
         XCTAssertThrowsError(try createModel(&desc, dict, progress)) { error in
-            XCTAssertEqual(error as! ACError, ACError.invalidModelCreation("Unknown inference type: nope"))
+            XCTAssertEqual(error as! ACError, ACError.invalidModelCreation("No loader found for schema type: nope"))
         }
 
         desc.inferenceType = "dummy"

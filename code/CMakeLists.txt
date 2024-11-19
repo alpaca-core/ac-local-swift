@@ -34,10 +34,9 @@ target_link_libraries(AlpacaCoreSwift
         ac::dict
         ac::local
     PRIVATE
-        ac-local-dummy
-        ac-local-whisper
-        ac-local-llama
         ac::jalog
+        itlib::itlib
+        aclp::dummy-plib
 )
 
 if(CMAKE_GENERATOR STREQUAL Xcode)
