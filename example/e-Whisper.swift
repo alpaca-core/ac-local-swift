@@ -24,7 +24,7 @@ struct WhisperExample {
         let whisperDir = String(cString: ACExampleData.AC.getWhisperDir())
         do {
             var desc = ModelDesc()
-            desc.inferenceType = "whisper.cpp"
+            desc.inferenceType = "whisper"
             desc.name = "synthetic whisper"
             desc.assets.append(AssetInfo(whisperDir + "/whisper-base.en-f16.bin", "whisper-base.en-f16.bin"))
 
