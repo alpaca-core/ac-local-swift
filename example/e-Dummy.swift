@@ -19,8 +19,8 @@ struct DummyExample {
         let instance: AlpacaCoreSwift.Instance
 
         do {
-            var desc = AlpacaCoreSwift.ModelDesc()
-            desc.inferenceType = "dummy"
+            var desc = AlpacaCoreSwift.ModelAssetDesc()
+            desc.type = "dummy"
             desc.name = "synthetic dummy"
 
             let dict = Dictionary<String, Any>()

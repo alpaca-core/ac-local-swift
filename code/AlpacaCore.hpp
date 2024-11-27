@@ -20,7 +20,7 @@ void initSDK();
 
 class Model;
 class DictRef;
-Expected<Model, std::string> createModel(AlpacaCoreSwift::ModelDesc& desc, DictRef params, ProgressCallbackData progressCbData);
+Expected<Model, std::string> loadModel(AlpacaCoreSwift::ModelAssetDesc& desc, DictRef params, ProgressCallbackData progressCbData);
 
 void loadPlugin(const std::string& path);
 void addPluginDir(const std::string& path);

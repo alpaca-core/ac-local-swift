@@ -73,7 +73,7 @@ func callObserver(observer: UnsafeMutableRawPointer,
 /// - Throws: `ACError.invalidModelCreation` if the model creation process encounters an error.
 ///
 /// - Returns: A `Model` instance representing the newly created model.
-public func createModel(_ desc: inout ModelDesc, _ params: Dictionary<String, Any>,
+public func createModel(_ desc: inout ModelAssetDesc, _ params: Dictionary<String, Any>,
                         _ progress: Optional<(String, Float) -> Void> = nil) throws -> Model {
     let paramsAsDict = try translateDictionaryToDict(params)
     let wrapper = ProgressCallbackWrapper(progress)
@@ -82,7 +82,7 @@ public func createModel(_ desc: inout ModelDesc, _ params: Dictionary<String, An
         cbData = AC.ProgressCallbackData(m_cb: callObserver, m_context: wrapper.getRawPointer())
     }
 
-    var result = AC.createModel(&desc, paramsAsDict.getRef(), cbData)
+    var result = AC.loadModel(&desc, paramsAsDict.getRef(), cbData)
     wrapper.releaseRawPointer(cbData.m_context)
     if result.hasError() {
         throw ACError.invalidModelCreation(String(result.error()))

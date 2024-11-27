@@ -15,9 +15,9 @@ public class AssetInfo {
 }
 
 /// The description of the model used by the native `ModelLoader`.
-public class ModelDesc {
+public class ModelAssetDesc {
     /// The type of the inference used to select the appropriate model loader.
-    public var inferenceType: String = ""
+    public var type: String = ""
 
     /// Name tag. Not used by the library in any way besides logs and may be helpful for debugging
     public var name: String = ""
@@ -29,8 +29,8 @@ public class ModelDesc {
         self.assets = []
     }
 
-    public init(_ inferenceType:String = "", _ name:String = "", _ assets:[AssetInfo] = []) {
-        self.inferenceType = inferenceType
+    public init(_ type:String = "", _ name:String = "", _ assets:[AssetInfo] = []) {
+        self.type = type
         self.name = name
         self.assets = assets
     }

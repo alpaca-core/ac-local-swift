@@ -29,7 +29,7 @@ mark_as_advanced(AC_LOCAL_SWIFT_BUILD_TESTS AC_LOCAL_SWIFT_BUILD_EXAMPLES)
 # packages
 
 include(ac_build_prj_util)
-add_ac_local(0.1.1)
+add_ac_local(0.1.3)
 CPMAddPackage(gh:iboB/itlib@1.11.4)
 
 #######################################

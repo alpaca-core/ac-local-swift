@@ -13,8 +13,8 @@ final class SwiftApiTests: XCTestCase {
     func testDummyInference() throws {
         print("Hello from e-Dummy.swift")
 
-        var desc = AlpacaCoreSwift.ModelDesc()
-        desc.inferenceType = "dummy"
+        var desc = AlpacaCoreSwift.ModelAssetDesc()
+        desc.type = "dummy"
         desc.name = "synthetic dummy"
 
         let dict = Dictionary<String, Any>()
@@ -37,16 +37,16 @@ final class SwiftApiTests: XCTestCase {
     }
 
     func testExpectedErrors() throws {
-        var desc = AlpacaCoreSwift.ModelDesc()
-        desc.inferenceType = "nope"
+        var desc = AlpacaCoreSwift.ModelAssetDesc()
+        desc.type = "nope"
         desc.name = "synthetic dummy"
         let dict = Dictionary<String, Any>()
 
         XCTAssertThrowsError(try createModel(&desc, dict, progress)) { error in
-            XCTAssertEqual(error as! ACError, ACError.invalidModelCreation("No loader found for schema type: nope"))
+            XCTAssertEqual(error as! ACError, ACError.invalidModelCreation("No loader found for: synthetic dummy"))
         }
 
-        desc.inferenceType = "dummy"
+        desc.type = "dummy"
         let model = try createModel(&desc, dict, progress)
         XCTAssertThrowsError(try model.createInstance("nope", dict)) { error in
             XCTAssertEqual(error as! ACError, ACError.invalidInstanceCreation("dummy: unknown instance type: nope"))
